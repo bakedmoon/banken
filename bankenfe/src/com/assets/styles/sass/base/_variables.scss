@@ -1,0 +1,36 @@
+$font-size: 16px;
+$space: 16px;
+$dblock: block;
+$dinline-block: block;
+$dtable: table;
+$dflex: flex;
+$dinline-flex: inline-flex;
+$none: none;
+$left: left;
+$right: right;
+$center: center;
+$null: 0;
+
+$primary-color: #176da6;
+$heading-color: #303030;
+$default-color: #524f4f;
+$print-color:#1798a6;
+$white-color: #ffffff;
+$dark-color:#303030;
+$light-color:#e0e0e0;
+$full-size:100%;
+$pos-relative:relative;
+$pos-absolute:absolute;
+$pos-fixed:fixed;
+.borderBottom{
+    border-bottom: $null !important;
+}
+.ant-col-5{
+    width: 20%;
+}
+.pright{
+    padding-right: $null !important;
+}
+.Section-padding{
+    padding: 0 15px;
+}

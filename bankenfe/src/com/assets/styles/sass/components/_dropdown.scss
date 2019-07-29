@@ -1,0 +1,18 @@
+.ant-select .ant-select-selection{
+    @include border(0px, 0px, 1px , 0px, solid, lighten($default-color, 55.9%) !important);
+    @include border-bottom-radius(0px);
+    padding: $null;
+    width: $full-size;
+    &:hover{
+      @include border(0px, 0px, 1px , 0px, solid, $primary-color !important);
+    }
+    &:focus{
+        box-shadow: none;
+    }
+    .ant-select-selection__rendered{
+      margin-left: $null;
+    }
+  }
+  .ant-select{
+    width: $full-size;
+  }

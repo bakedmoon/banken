@@ -1,0 +1,899 @@
+/* Document
+   ========================================================================== */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  line-height: 1.15;
+  /* 2 */
+  -ms-text-size-adjust: 100%;
+  /* 3 */
+  -webkit-text-size-adjust: 100%;
+  /* 3 */ }
+
+/* Sections
+     ========================================================================== */
+body {
+  margin: 0; }
+
+/**
+   * Add the correct display in IE 9-.
+   */
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block; }
+
+/**
+   * Correct the font size and margin on `h1` elements within `section` and
+   * `article` contexts in Chrome, Firefox, and Safari.
+   */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0; }
+
+/* Grouping content
+     ========================================================================== */
+/**
+   * Add the correct display in IE 9-.
+   * 1. Add the correct display in IE.
+   */
+figcaption,
+figure,
+main {
+  /* 1 */
+  display: block; }
+
+/**
+   * Add the correct margin in IE 8.
+   */
+figure {
+  margin: 1em 40px; }
+
+/**
+   * 1. Add the correct box sizing in Firefox.
+   * 2. Show the overflow in Edge and IE.
+   */
+hr {
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  /* 1 */
+  height: 0;
+  /* 1 */
+  overflow: visible;
+  /* 2 */ }
+
+/**
+   * 1. Correct the inheritance and scaling of font size in all browsers.
+   * 2. Correct the odd `em` font sizing in all browsers.
+   */
+pre {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */ }
+
+/* Text-level semantics
+     ========================================================================== */
+a {
+  background-color: transparent;
+  /* 1 */
+  -webkit-text-decoration-skip: objects;
+  /* 2 */ }
+
+/**
+   * Remove the outline on focused links when they are also active or hovered
+   * in all browsers (opinionated).
+   */
+a:active,
+a:hover {
+  outline-width: 0; }
+
+/**
+   * 1. Remove the bottom border in Firefox 39-.
+   * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+   */
+abbr[title] {
+  border-bottom: none;
+  /* 1 */
+  text-decoration: underline;
+  /* 2 */
+  -webkit-text-decoration: underline dotted;
+  text-decoration: underline dotted;
+  /* 2 */ }
+
+/**
+   * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+   */
+b,
+strong {
+  font-weight: inherit; }
+
+/**
+   * Add the correct font weight in Chrome, Edge, and Safari.
+   */
+b,
+strong {
+  font-weight: bolder; }
+
+/**
+   * 1. Correct the inheritance and scaling of font size in all browsers.
+   * 2. Correct the odd `em` font sizing in all browsers.
+   */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  /* 1 */
+  font-size: 1em;
+  /* 2 */ }
+
+/**
+   * Add the correct font style in Android 4.3-.
+   */
+dfn {
+  font-style: italic; }
+
+/**
+   * Add the correct background and color in IE 9-.
+   */
+mark {
+  background-color: #ff0;
+  color: #000; }
+
+/**
+   * Add the correct font size in all browsers.
+   */
+small {
+  font-size: 80%; }
+
+/**
+   * Prevent `sub` and `sup` elements from affecting the line height in
+   * all browsers.
+   */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sub {
+  bottom: -0.25em; }
+
+sup {
+  top: -0.5em; }
+
+/* Embedded content
+     ========================================================================== */
+/**
+   * Add the correct display in IE 9-.
+   */
+audio,
+video {
+  display: inline-block; }
+
+/**
+   * Add the correct display in iOS 4-7.
+   */
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+img {
+  border-style: none; }
+
+/**
+   * Hide the overflow in IE.
+   */
+svg:not(:root) {
+  overflow: hidden; }
+
+/* Forms
+     ========================================================================== */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: sans-serif;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */ }
+
+/**
+   * Show the overflow in IE.
+   * 1. Show the overflow in Edge.
+   */
+button,
+input {
+  /* 1 */
+  overflow: visible; }
+
+/**
+   * Remove the inheritance of text transform in Edge, Firefox, and IE.
+   * 1. Remove the inheritance of text transform in Firefox.
+   */
+button,
+select {
+  /* 1 */
+  text-transform: none; }
+
+/**
+   * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+   *    controls in Android 4.
+   * 2. Correct the inability to style clickable types in iOS and Safari.
+   */
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */ }
+
+/**
+   * Remove the inner border and padding in Firefox.
+   */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0; }
+
+/**
+   * Restore the focus styles unset by the previous rule.
+   */
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText; }
+
+/**
+   * Change the border, margin, and padding in all browsers (opinionated).
+   */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em; }
+
+/**
+   * 1. Correct the text wrapping in Edge and IE.
+   * 2. Correct the color inheritance from `fieldset` elements in IE.
+   * 3. Remove the padding so developers are not caught out when they zero out
+   *    `fieldset` elements in all browsers.
+   */
+legend {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  display: table;
+  /* 1 */
+  max-width: 100%;
+  /* 1 */
+  padding: 0;
+  /* 3 */
+  white-space: normal;
+  /* 1 */ }
+
+/**
+   * 1. Add the correct display in IE 9-.
+   * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
+   */
+progress {
+  display: inline-block;
+  /* 1 */
+  vertical-align: baseline;
+  /* 2 */ }
+
+/**
+   * Remove the default vertical scrollbar in IE.
+   */
+textarea {
+  overflow: auto; }
+
+/**
+   * 1. Add the correct box sizing in IE 10-.
+   * 2. Remove the padding in IE 10-.
+   */
+[type="checkbox"],
+[type="radio"] {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */ }
+
+/**
+   * Correct the cursor style of increment and decrement buttons in Chrome.
+   */
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto; }
+
+/**
+   * 1. Correct the odd appearance in Chrome and Safari.
+   * 2. Correct the outline style in Safari.
+   */
+[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */ }
+
+/**
+   * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+   */
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+/**
+   * 1. Correct the inability to style clickable types in iOS and Safari.
+   * 2. Change font properties to `inherit` in Safari.
+   */
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */ }
+
+/* Interactive
+     ========================================================================== */
+/*
+   * Add the correct display in IE 9-.
+   * 1. Add the correct display in Edge, IE, and Firefox.
+   */
+details,
+menu {
+  display: block; }
+
+/*
+   * Add the correct display in all browsers.
+   */
+summary {
+  display: list-item; }
+
+/* Scripting
+     ========================================================================== */
+/**
+   * Add the correct display in IE 9-.
+   */
+canvas {
+  display: inline-block; }
+
+/**
+   * Add the correct display in IE.
+   */
+template {
+  display: none; }
+
+/* Hidden
+     ========================================================================== */
+/**
+   * Add the correct display in IE 10-.
+   */
+[hidden] {
+  display: none; }
+
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit; }
+
+/**
+   * Basic styles for links
+   */
+a, .ant-btn-link {
+  color: #176da6 !important;
+  text-decoration: none; }
+
+.borderBottom {
+  border-bottom: 0 !important; }
+
+.ant-col-5 {
+  width: 20%; }
+
+.pright {
+  padding-right: 0 !important; }
+
+.Section-padding {
+  padding: 0 15px; }
+
+header {
+  background: #ffffff !important;
+  padding: 0 20px !important; }
+  header span {
+    font-size: 22px;
+    font-weight: 500;
+    color: #3e3c3c;
+    text-transform: uppercase; }
+  header label {
+    color: #176da6; }
+  header .ant-card-extra {
+    padding: 0; }
+
+.leftpanel {
+  overflow: auto;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#2274a8), to(#3b50a2)) !important;
+  background-image: -webkit-linear-gradient(top, #2274a8, #3b50a2) !important;
+  background-image: -o-linear-gradient(top, #2274a8, #3b50a2) !important;
+  background-image: linear-gradient(to bottom, #2274a8, #3b50a2) !important; }
+  .leftpanel .logo {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    padding-left: 20px; }
+    .leftpanel .logo img {
+      width: 116px; }
+    .leftpanel .logo .trigger {
+      top: 25px;
+      right: auto;
+      bottom: auto;
+      left: 170px;
+      position: absolute;
+      width: 18px;
+      cursor: pointer; }
+  .leftpanel ul {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#2274a8), to(#3b50a2)) !important;
+    background-image: -webkit-linear-gradient(top, #2274a8, #3b50a2) !important;
+    background-image: -o-linear-gradient(top, #2274a8, #3b50a2) !important;
+    background-image: linear-gradient(to bottom, #2274a8, #3b50a2) !important; }
+    .leftpanel ul li {
+      width: calc(100% - 10px) !important;
+      font-size: 16px !important;
+      opacity: 0.8;
+      filter: alpha(opacity=80);
+      margin-left: 10px; }
+      .leftpanel ul li i {
+        color: #ffffff; }
+      .leftpanel ul li span {
+        color: #ffffff; }
+    .leftpanel ul .ant-menu-item {
+      height: 50px;
+      line-height: 50px; }
+    .leftpanel ul .ant-menu-item-selected {
+      background-color: rgba(255, 255, 255, 0.2) !important;
+      -webkit-border-bottom-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+      -webkit-border-top-left-radius: 6px;
+      border-top-left-radius: 6px;
+      background-clip: padding-box;
+      opacity: 1;
+      filter: alpha(opacity=100); }
+
+.ant-layout-sider-collapsed .logo {
+  margin-bottom: 80px; }
+  .ant-layout-sider-collapsed .logo span img {
+    display: none; }
+  .ant-layout-sider-collapsed .logo .trigger {
+    top: 25px;
+    right: auto;
+    bottom: auto;
+    left: 40px; }
+
+.ant-layout-sider-collapsed ul li label {
+  opacity: 0;
+  filter: alpha(opacity=0); }
+
+.layoutMaincontent {
+  position: absolute;
+  height: calc(100vh - 70px);
+  overflow: auto; }
+
+.ant-layout {
+  background: #ffffff; }
+
+.FooterPanel {
+  margin-left: 208px;
+  position: fixed;
+  bottom: 0;
+  width: calc(100% - 208px);
+  height: 64px;
+  line-height: 64px;
+  -webkit-box-shadow: 0 -8px 24px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 0 -8px 24px 0 rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between; }
+  .FooterPanel .leftSide span {
+    margin-right: 20px;
+    font-size: 16px;
+    height: 64px;
+    display: inline-block; }
+    .FooterPanel .leftSide span a {
+      height: 64px;
+      display: inline-block;
+      color: #524f4f;
+      padding: 0 16px; }
+      .FooterPanel .leftSide span a img {
+        margin-right: 4px; }
+      .FooterPanel .leftSide span a:hover {
+        background: #176da6;
+        color: #ffffff !important; }
+  .FooterPanel .rightSide label {
+    margin-right: 16px; }
+  .FooterPanel .rightSide button {
+    margin-right: 16px; }
+
+.previewtable {
+  width: 100%; }
+  .previewtable .headerPrint {
+    width: 100%; }
+    .previewtable .headerPrint tr td {
+      vertical-align: top; }
+      .previewtable .headerPrint tr td:last-child {
+        text-align: right; }
+      .previewtable .headerPrint tr td h3 {
+        font-size: 18px;
+        font-weight: normal;
+        color: #1798a6;
+        margin-top: 0px;
+        margin-bottom: 4px; }
+      .previewtable .headerPrint tr td h4 {
+        font-size: 14px;
+        color: #1798a6; }
+      .previewtable .headerPrint tr td p {
+        font-size: 12px;
+        color: #524f4f;
+        margin-top: 4px;
+        margin-bottom: 4px; }
+  .previewtable .patientDetailPrint {
+    width: 100%;
+    font-size: 12px;
+    color: #524f4f;
+    border-radius: 4px;
+    background-color: #fafafa;
+    padding: 4px; }
+    .previewtable .patientDetailPrint tr td {
+      vertical-align: top;
+      padding: 4px; }
+      .previewtable .patientDetailPrint tr td label {
+        display: table-cell; }
+      .previewtable .patientDetailPrint tr td span {
+        display: table-cell; }
+      .previewtable .patientDetailPrint tr td:first-child {
+        width: 65%; }
+  .previewtable .clinicalNotes {
+    width: 100%; }
+    .previewtable .clinicalNotes h4 {
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      margin: 16px 0 8px; }
+    .previewtable .clinicalNotes .blocklevelElements ul {
+      padding-left: 18px;
+      border-bottom: 1px solid #d9d9d9;
+      padding-bottom: 16px; }
+      .previewtable .clinicalNotes .blocklevelElements ul li {
+        color: #1798a6;
+        font-size: 16px; }
+        .previewtable .clinicalNotes .blocklevelElements ul li span {
+          font-size: 12px;
+          color: #524f4f; }
+    .previewtable .clinicalNotes .seperatedElements ul {
+      padding-left: 2px;
+      border-bottom: 1px solid #d9d9d9;
+      padding-bottom: 16px; }
+      .previewtable .clinicalNotes .seperatedElements ul li {
+        color: #524f4f;
+        font-size: 12px;
+        display: inline;
+        position: relative; }
+        .previewtable .clinicalNotes .seperatedElements ul li span:after {
+          content: ',';
+          position: relative; }
+        .previewtable .clinicalNotes .seperatedElements ul li:last-child span:after {
+          content: ''; }
+  .previewtable .medication-table {
+    width: 100%; }
+    .previewtable .medication-table tr th {
+      padding: 8px;
+      font-weight: 500; }
+    .previewtable .medication-table tr td {
+      padding: 4px 8px; }
+    .previewtable .medication-table tr th, .previewtable .medication-table tr td {
+      font-size: 12px;
+      border: 1px solid #e0e0e0; }
+
+.ant-btn-primary {
+  background: #176da6; }
+
+.ant-select .ant-select-selection {
+  border-top: 0px solid #e0dede !important;
+  border-right: 0px solid #e0dede !important;
+  border-bottom: 1px solid #e0dede !important;
+  border-left: 0px solid #e0dede !important;
+  -webkit-border-bottom-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  background-clip: padding-box;
+  padding: 0;
+  width: 100%; }
+  .ant-select .ant-select-selection:hover {
+    border-top: 0px solid #176da6 !important;
+    border-right: 0px solid #176da6 !important;
+    border-bottom: 1px solid #176da6 !important;
+    border-left: 0px solid #176da6 !important; }
+  .ant-select .ant-select-selection:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none; }
+  .ant-select .ant-select-selection .ant-select-selection__rendered {
+    margin-left: 0; }
+
+.ant-select {
+  width: 100%; }
+
+.patientDetails {
+  width: 100%;
+  -webkit-border-top-right-radius: 6px;
+  border-top-right-radius: 6px;
+  -webkit-border-top-left-radius: 6px;
+  border-top-left-radius: 6px;
+  background-clip: padding-box;
+  border-top: 1px solid #bdbdbd;
+  border-right: 1px solid #bdbdbd;
+  border-bottom: 1px solid #bdbdbd;
+  border-left: 1px solid #bdbdbd; }
+  .patientDetails .subheading {
+    padding: 4px 12px; }
+    .patientDetails .subheading h4 {
+      margin: 0;
+      font-size: 12px;
+      color: #524f4f; }
+  .patientDetails .patientgrid {
+    display: table;
+    width: 100%;
+    height: auto;
+    float: none; }
+    .patientDetails .patientgrid .medicalHistory {
+      width: 100%;
+      border-right: 1px solid #e0dfdf; }
+      .patientDetails .patientgrid .medicalHistory .ant-card-body {
+        padding: 0; }
+        .patientDetails .patientgrid .medicalHistory .ant-card-body .ant-card-head {
+          background: #f1f1f1;
+          color: #524f4f;
+          padding: 0 8px;
+          height: 42px;
+          min-height: 42px;
+          line-height: 1; }
+        .patientDetails .patientgrid .medicalHistory .ant-card-body .ant-card-head-wrapper .ant-card-extra a {
+          font-size: 13px;
+          margin-right: 8px; }
+          .patientDetails .patientgrid .medicalHistory .ant-card-body .ant-card-head-wrapper .ant-card-extra a:last-child {
+            margin-right: 0; }
+      .patientDetails .patientgrid .medicalHistory h3 {
+        font-size: 14px;
+        color: #524f4f;
+        margin: 0;
+        background: #f1f1f1;
+        line-height: 42px;
+        font-weight: normal;
+        padding: 0 12px; }
+        .patientDetails .patientgrid .medicalHistory h3 span a:first-child {
+          margin-right: 12px; }
+      .patientDetails .patientgrid .medicalHistory ul {
+        padding: 8px;
+        margin-bottom: 0; }
+      .patientDetails .patientgrid .medicalHistory .historyPoints {
+        position: relative;
+        padding-left: 12px;
+        list-style: none; }
+        .patientDetails .patientgrid .medicalHistory .historyPoints li {
+          position: relative;
+          font-size: 14px;
+          color: #524f4f;
+          padding: 0 16px 12px;
+          width: 50%;
+          float: left;
+          overflow: hidden;
+          -o-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          white-space: nowrap; }
+          .patientDetails .patientgrid .medicalHistory .historyPoints li img {
+            position: absolute;
+            left: 0;
+            width: 16px;
+            height: 16px;
+            top: 4px; }
+          .patientDetails .patientgrid .medicalHistory .historyPoints li:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            -webkit-border-radius: 50px;
+            border-radius: 50px;
+            background-clip: padding-box;
+            /* stops bg color from leaking outside the border: */
+            width: 5px;
+            height: 5px;
+            background: #918d8d;
+            top: 8px; }
+      .patientDetails .patientgrid .medicalHistory .historyPoints.list-unstyled li {
+        padding-left: 24px; }
+        .patientDetails .patientgrid .medicalHistory .historyPoints.list-unstyled li:before {
+          width: 0px;
+          height: 0px; }
+    .patientDetails .patientgrid .vitalDetails .ant-tabs .ant-tabs-bar {
+      margin-bottom: 4px; }
+    .patientDetails .patientgrid .vitalDetails .ant-tabs .ant-tabs-nav-container {
+      color: #524f4f;
+      padding: 0 8px;
+      background: #f1f1f1;
+      height: 44px;
+      min-height: 44px;
+      line-height: 1;
+      border-bottom: 1px solid #e0dede;
+      padding-top: 13px; }
+      .patientDetails .patientgrid .vitalDetails .ant-tabs .ant-tabs-nav-container .ant-tabs-tab {
+        margin-right: 0;
+        padding: 9px 8px;
+        color: #bdbaba; }
+      .patientDetails .patientgrid .vitalDetails .ant-tabs .ant-tabs-nav-container .ant-tabs-tab-active {
+        background: #176da6;
+        color: #ffffff;
+        -webkit-border-top-right-radius: 4px;
+        border-top-right-radius: 4px;
+        -webkit-border-top-left-radius: 4px;
+        border-top-left-radius: 4px;
+        background-clip: padding-box; }
+    .patientDetails .patientgrid .vitalDetails .ant-tabs .Vital-form-fields {
+      margin: 0 !important; }
+      .patientDetails .patientgrid .vitalDetails .ant-tabs .Vital-form-fields:last-child {
+        margin-top: 4px !important; }
+      .patientDetails .patientgrid .vitalDetails .ant-tabs .Vital-form-fields .gutter-row .gutter-box input {
+        border-top: 0px solid #e0dede;
+        border-right: 0px solid #e0dede;
+        border-bottom: 1px solid #e0dede;
+        border-left: 0px solid #e0dede;
+        -webkit-border-bottom-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        -webkit-border-bottom-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        background-clip: padding-box;
+        padding: 0;
+        width: 100%; }
+        .patientDetails .patientgrid .vitalDetails .ant-tabs .Vital-form-fields .gutter-row .gutter-box input:hover {
+          border-top: 0px solid #176da6 !important;
+          border-right: 0px solid #176da6 !important;
+          border-bottom: 1px solid #176da6 !important;
+          border-left: 0px solid #176da6 !important; }
+
+.NotesDetails {
+  margin-top: 16px; }
+  .NotesDetails .ant-card-bordered {
+    border: 0; }
+    .NotesDetails .ant-card-bordered .ant-card-head {
+      height: 22px;
+      min-height: 22px;
+      padding: 0; }
+      .NotesDetails .ant-card-bordered .ant-card-head .ant-card-head-wrapper {
+        height: 20px; }
+        .NotesDetails .ant-card-bordered .ant-card-head .ant-card-head-wrapper .ant-card-head-title {
+          font-size: 14px;
+          color: #524f4f;
+          padding: 0; }
+        .NotesDetails .ant-card-bordered .ant-card-head .ant-card-head-wrapper .ant-card-extra {
+          font-size: 12px; }
+          .NotesDetails .ant-card-bordered .ant-card-head .ant-card-head-wrapper .ant-card-extra a {
+            color: #176da6; }
+  .NotesDetails .ant-card-body {
+    padding: 0; }
+    .NotesDetails .ant-card-body .ant-input-affix-wrapper input {
+      height: 40px;
+      -webkit-border-bottom-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+      -webkit-border-bottom-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+      background-clip: padding-box; }
+    .NotesDetails .ant-card-body .tags {
+      border-top: 0px solid #e0dede;
+      border-right: 1px solid #e0dede;
+      border-bottom: 1px solid #e0dede;
+      border-left: 1px solid #e0dede;
+      padding: 8px; }
+      .NotesDetails .ant-card-body .tags .ant-tag {
+        width: auto;
+        height: 27px;
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-border-radius: 64px;
+        border-radius: 64px;
+        background-clip: padding-box;
+        /* stops bg color from leaking outside the border: */
+        font-size: 14px;
+        margin-bottom: 4px;
+        cursor: pointer;
+        border: solid 1px #e0dede;
+        background-color: #f1f1f1; }
+      .NotesDetails .ant-card-body .tags .ant-tag-checkable-checked {
+        background-color: #176da6; }
+    .NotesDetails .ant-card-body .dateStructure input {
+      width: 28px;
+      height: 32px !important;
+      margin-right: 8px;
+      padding: 0 4px !important;
+      text-align: center; }
+      .NotesDetails .ant-card-body .dateStructure input:last-child {
+        margin-right: 0; }
+
+.prescriptionPreviewTabs {
+  width: 100%; }
+  .prescriptionPreviewTabs .ant-tabs-nav-container {
+    background: #f1f1f1;
+    -webkit-border-top-right-radius: 8px;
+    border-top-right-radius: 8px;
+    -webkit-border-top-left-radius: 8px;
+    border-top-left-radius: 8px;
+    background-clip: padding-box;
+    margin-top: 8px; }
+
+.templateDetails {
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  background-clip: padding-box;
+  /* stops bg color from leaking outside the border: */
+  background: #fafafa;
+  padding: 8px;
+  border: 1px solid #bdbaba;
+  margin-top: 8px; }
+  .templateDetails .templateSearchDetail {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 12px; }
+    .templateDetails .templateSearchDetail .ant-input-search input {
+      width: 172px;
+      height: 27px;
+      -webkit-border-radius: 64px;
+      border-radius: 64px;
+      background-clip: padding-box;
+      /* stops bg color from leaking outside the border: */ }
+    .templateDetails .templateSearchDetail .ant-input-search .ant-input-suffix {
+      display: none; }
+    .templateDetails .templateSearchDetail button {
+      padding-right: 4px; }
+    .templateDetails .templateSearchDetail span {
+      padding-top: 4px; }
+  .templateDetails .ant-checkbox-group span.inlinecheckbox {
+    margin-right: 16px; }
+    .templateDetails .ant-checkbox-group span.inlinecheckbox .ant-checkbox-wrapper .ant-checkbox {
+      padding-right: 0; }
+      .templateDetails .ant-checkbox-group span.inlinecheckbox .ant-checkbox-wrapper .ant-checkbox input {
+        border-radius: 16px; }
+    .templateDetails .ant-checkbox-group span.inlinecheckbox .ant-checkbox-wrapper span {
+      padding-right: 4px; }
+    .templateDetails .ant-checkbox-group span.inlinecheckbox label img {
+      width: 10px; }

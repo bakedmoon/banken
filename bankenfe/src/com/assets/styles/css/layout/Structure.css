@@ -1,0 +1,11 @@
+.leftpanel ul {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#2274a8), to(#3b50a2));
+  background-image: -webkit-linear-gradient(top, #2274a8, #3b50a2);
+  background-image: -o-linear-gradient(top, #2274a8, #3b50a2);
+  background-image: linear-gradient(to bottom, #2274a8, #3b50a2); }
+  .leftpanel ul li i {
+    color: #fff; }
+  .leftpanel ul li span {
+    color: #fff; }
+  .leftpanel ul .ant-menu-item-selected {
+    background-color: #fff !important; }

@@ -1,0 +1,20 @@
+
+ html {
+    box-sizing: border-box;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+  
+  /**
+   * Basic styles for links
+   */
+  a , .ant-btn-link{
+    color: #176da6 !important;
+    text-decoration: none;
+    
+  
+  }
