@@ -14,12 +14,11 @@
   
 // Layout-related sections
 @import
-  'layout/structure',
+  'layout/structure';
  
-// Components
+// pages 
 @import
-  'components/button',
-  'components/dropdown';
+'panel/admin/employee';
 
 // Page-specific styles
 
