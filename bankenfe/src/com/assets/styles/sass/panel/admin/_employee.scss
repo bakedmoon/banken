@@ -1,0 +1,21 @@
+.employyeeDetails{
+    .buttonWrapper{
+        display: $dflex;
+        width: $full-size;
+    }
+    .cardwrapper{
+        .ant-card{
+          .ant-card-body{
+             .ant-card-meta-detail{
+                 .ant-card-meta-title{
+                margin-bottom: $null;
+                                }
+                             }
+                    p{
+                        margin: $space 0 0;
+                        padding-left: $space * 3;
+                    }         
+                         }
+                  }
+                 }
+}
