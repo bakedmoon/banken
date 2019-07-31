@@ -12,13 +12,13 @@ class Userflow extends Component {
         return (
             <div>
                  <Tabs defaultActiveKey="1" onChange={callback}>
-                    <TabPane tab="Tab 1" key="1">
+                    <TabPane tab="Personal Info" key="1">
                       <Personal></Personal>
                     </TabPane>
-                    <TabPane tab="Tab 2" key="2">
+                    <TabPane tab="Work" key="2">
                     Content of Tab Pane 2
                     </TabPane>
-                    <TabPane tab="Tab 3" key="3">
+                    <TabPane tab="Team" key="3">
                     Content of Tab Pane 3
                     </TabPane>
                  </Tabs>

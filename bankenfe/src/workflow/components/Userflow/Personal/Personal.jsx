@@ -5,13 +5,13 @@ class Personal extends Component {
     render() {
         return (
             <div>
-              <Descriptions title="User Info">
-                <Descriptions.Item label="UserName">Zhou Maomao</Descriptions.Item>
-                <Descriptions.Item label="Telephone">1810000000</Descriptions.Item>
-                <Descriptions.Item label="Live">Hangzhou, Zhejiang</Descriptions.Item>
-                <Descriptions.Item label="Remark">empty</Descriptions.Item>
+              <Descriptions title="Personal Info">
+                <Descriptions.Item label="Name">Zhou Maomao</Descriptions.Item>
+                <Descriptions.Item label="Gender">Female</Descriptions.Item>
+                <Descriptions.Item label="Date of Birth">25/12/2000</Descriptions.Item>
+                <Descriptions.Item label="Marital Status">Single</Descriptions.Item>
                 <Descriptions.Item label="Address">
-                No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China
+                      No. 18, Wantang Road, Xihu District, Hangzhou, Zhejiang, China
                 </Descriptions.Item>
             </Descriptions>  
             </div>
