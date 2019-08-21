@@ -19,8 +19,8 @@ function App() {
      <Layout>
       <Content style={{ margin: '0 16px' }}>
       <Userflow></Userflow>
-      </Content>
-      </Layout>
+      </Content> 
+       </Layout>
    </Layout>
   );
 }
