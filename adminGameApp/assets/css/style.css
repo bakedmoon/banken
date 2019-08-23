@@ -1,0 +1,128 @@
+body {
+  margin: 0;
+}
+.login-wrapper {
+  width: 100%;
+  height: 100vh;
+  background: url("../images/bglogin.jpg");
+  background-position: center;
+  background-size: contain;
+  display: flex;
+}
+
+.mobileViewLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  margin: auto;
+  background-position: center;
+  background: rgba(27, 3, 2, 0.30196078431372547);
+  border-radius: 8px;
+  padding: 21px 40px;
+}
+
+.mobileViewLogin form {
+  width: 100%;
+}
+
+.mobileViewLogin .form-group label {
+  color: #cccccc;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.mobileViewLogin .form-group .form-control {
+  border: 1px solid #696969;
+  background-color: transparent;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #3d1c1a;
+  border-color: transparent;
+}
+
+.btn-primary:hover {
+  background-color: #3d1c1a;
+  opacity: 0.8;
+  border-color: transparent;
+}
+
+/* dashboard css start */
+.nav-profile-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+.nav-user-name {
+  vertical-align: middle;
+}
+
+.admin_form_1 {
+  width: 500px;
+  margin: auto;
+}
+
+.character-list {
+  padding-left: 0px;
+  margin-top: 8px;
+}
+
+.character-list li {
+  display: inline-block;
+  height: 32px;
+  line-height: 32px;
+  background-color: #696969;
+  border-radius: 20px;
+  padding: 0px 12px;
+  color: #fff;
+  margin-right: 4px;
+}
+
+.character-list li i {
+  cursor: pointer;
+  padding-left: 12px;
+}
+
+.character-input-wrap {
+  position: relative;
+}
+
+.add-character-btn {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 18px;
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.1s ease-in-out;
+  color: #fff;
+  position: absolute;
+  right: 12px;
+  top: 0px;
+  bottom: 0px;
+  margin: auto;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.add-character-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.add_col_btn {
+  width: 32px;
+  height: 32px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+  color: #fff;
+  font-size: 20px;
+  line-height: 1px;
+}
+
+.content-wrapper {
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
+/* dashboard css end */
