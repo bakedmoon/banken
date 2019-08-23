@@ -1,69 +1,128 @@
 import React, { Component } from 'react';
 import { View,  Text, StyleSheet, TouchableHighlight, Image} from 'react-native'
 
-class App extends Component {
+export default class App extends Component {
  
 constructor() {
   super();
   this.state = {
-    myarray : [
-      {
-        id: 1,
-        title: 'How to Cook Blue Meth',
-        description: 'Lorem ipsum dolor sit amet, turpis at, elit',
-        thump: 'thump.jpg',
-        hero: '/img/',
-        category: 'k1',
-        fullname: 'Walter White',
-        published: '10.05.2016, 15:30pm',
-      },
-      {
-        id: 2,
-        title: 'Passenger',
-        description: 'Lorem ipsum dolor sit amet, turpis at, elit',
-        thump: 'thump.jpg',
-        hero: '/img/',
-        category: 'k2',
-        fullname: 'Chino Moreno',
-        published: '10.05.2016, 15:30pm',
-       },
-        // ...and more dummy posts(about 7)
-       ]
-  }
-  }
-
-  shuffle(arra1) {
-    console.log("THE ARRAY  =>>",arra1)
-    var ctr = arra1.length, temp, index;
-
-// While there are elements in the array
-    while (ctr > 0) {
-// Pick a random index
-        index = Math.floor(Math.random() * ctr);
-// Decrease ctr by 1
-        ctr--;
-// And swap the last element with it
-        temp = arra1[ctr];
-        arra1[ctr] = arra1[index];
-        arra1[index] = temp;
+     arr : [
+       {
+      "img": require("./assets/image1.jpeg")
+    },
+    {
+      "img": require("./assets/image2.jpeg")
+    },
+    {
+      "img": require("./assets/image3.jpeg")
     }
-    return arra1;
-}
+     ]
+    
+  }
+  }
 
+shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+  
+    while (0 !== currentIndex) {
+  
+       randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+  
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+  
+    return array;
+  }
+  
 componentWillMount(){
-  let myData = this.state.myarray
+  let myData = this.state.arr
   this.shuffle(myData)
+  console.log(this.state.arr);
+  
 }
 
   render() {
   return (
-          <View>
-            <Text>wwdedke</Text>
-          </View>
+    this.state.arr.map(item => {
+      return 
+      <View
+      style={{
+        flex: 1,
+        flexDirection: "column",
+        justifyContent: "flex-start"
+      }}
+    >
+      <ImageBackground source={bg} style={styles.backgroundImage} />
+      <View style={styles.overlay} />
+       <View style={{ position: "absolute", top: 0, width: "100%" }}>
+         <CountDown
+           size={20}
+           until={1000}
+           onFinish={() => alert("Finished")}
+           digitStyle={{
+             backgroundColor: "#FFF"
+           }}
+           digitTxtStyle={{ color: "#1CC625" }}
+           timeLabelStyle={{ color: "red", fontWeight: "bold" }}
+           separatorStyle={{ color: "#1CC625" }}
+           timeToShow={["H", "M", "S"]}
+           timeLabels={{ m: null, s: null }}
+           showSeparator
+         />
+            <View style={styles.container}>
+           <View style={styles.card}>
+              <Image source={item.img}
+               style={{height: 60, width: 60}} 
+               resizeMode='contain' />
+   </View>
+   </View>
+   </View>
+   </View>
+    })
            
           
   );
   }
-  }
   
-  export default App;
+}
+  
+  
+
+  const styles = StyleSheet.create({
+    container: {
+      flexDirection: "row"
+    },
+    card: {
+      flex: 1,
+      height: 80,
+      borderRadius: 8,
+      backgroundColor: "rgba(144, 212 , 245, 0.2)",
+      margin: 5,
+      shadowOffset: { width: 20, height: 20 },
+      shadowColor: "#95b2c3",
+      shadowOpacity: 1.0,
+      textAlign: "center",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    backgroundImage: {
+      flex: 1,
+      height: "100%",
+      resizeMode: "cover" // or 'stretch'
+    },
+    overlay: {
+      flex: 1,
+      position: "absolute",
+      backgroundColor: "rgba(0,0,0,0.5)",
+      width: "100%",
+      height: "100%"
+    },
+    iconSize: {
+      maxHeight: 64,
+      maxWidth: 64,
+      borderRadius: 8
+    }
+   });
