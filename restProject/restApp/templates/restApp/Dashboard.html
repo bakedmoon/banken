@@ -1,0 +1,555 @@
+{% extends "restApp/base.html" %} {% block body_block %}
+
+<div class="container content-wrapper">
+  <form class="admin_form_1" method="post" action="{% url 'restApi'%}">
+    <!-- <h2>Game Details</h2> -->
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="form-group">
+          <label>Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            placeholder="Enter Title"
+            name="title"
+          />
+        </div>
+      </div>
+
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="form-group">
+          <label>Value</label>
+          <input
+            type="text"
+            class="form-control"
+            id="amount"
+            placeholder="Enter Game Value"
+            name="amount"
+          />
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="form-group">
+          <label>Start Time</label>
+          <input
+            type="time"
+            class="form-control"
+            id="startTime"
+            placeholder="Enter Game Value"
+            name="startTime"
+          />
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="form-group">
+          <label>End Time</label>
+          <input
+            type="time"
+            class="form-control"
+            id="endTime"
+            placeholder="Enter Game Value"
+            name="endTime"
+          />
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="container">
+  <div class="row content-wrapper">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <form action="/action_page.php">
+        <h2>Character Details</h2>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group">
+              <label for="total_character">Total Characters</label>
+              <input
+                type="text"
+                class="form-control"
+                id="total_character"
+                placeholder="Enter Total Character"
+                name="total_character"
+              />
+            </div>
+          </div>
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group">
+              <label for="character_title">Add Characters</label>
+              <div class="character-input-wrap">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="myInput"
+                  placeholder="Enter Character"
+                  name="character_title"
+                />
+                <span
+                  class="add-character-btn myBtn"
+                  onClick="init_department()"
+                  >+</span
+                >
+              </div>
+              <ul class="character-list" id="department_list_div">
+                <!-- <li>
+                      <span>Dog</span
+                      ><i class="fa fa-times" aria-hidden="true"></i>
+                    </li>
+                    <li>
+                      <span>Dog</span
+                      ><i class="fa fa-times" aria-hidden="true"></i>
+                    </li>
+                    <li>
+                      <span>Dog</span
+                      ><i class="fa fa-times" aria-hidden="true"></i>
+                    </li> -->
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group">
+              <label for="game_value">Choose Character</label>
+              <select class="form-control" id="sel1"> </select>
+            </div>
+          </div>
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="form-group">
+              <label for="image_url">Image Url</label>
+              <input
+                type="text"
+                class="form-control"
+                id="image_url"
+                placeholder="Enter Image Url"
+                name="image_url"
+              />
+            </div>
+          </div>
+
+          <div class="col-lg-12 add-character-details-sec">
+            <div class="row">
+              <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label for="image_url">No of characters</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="image_url"
+                    placeholder="Enter Image Url"
+                    name="image_url"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                  <label for="image_url">Total amount</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="image_url"
+                    placeholder="Enter Image Url"
+                    name="image_url"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 text-center">
+                <button type="submit" class="btn btn-primary">Add</button>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h6>Split characters and amount</h6>
+              </div>
+
+              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                <div class="form-group">
+                  <label>Characters</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Character"
+                    name="character_no"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                <div class="form-group">
+                  <label>Character amount</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Character"
+                    name="character_amount"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-2 col-md-1 col-sm-1 col-xs-12">
+                <button class="add_col_btn"><span>+</span></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center mt-4">
+            <button type="submit" class="btn btn-primary">
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <h2>Character List</h2>
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header">
+            <a class="card-link" data-toggle="collapse" href="#collapseOne">
+              Character Details #1
+            </a>
+          </div>
+          <div id="collapseOne" class="collapse" data-parent="#accordion">
+            <div class="row p-4">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label>Character Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Character Name"
+                    name="character_name"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label>Image Url</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Image Url"
+                    name="image_url"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label>No of characters</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Character Name"
+                    name="character_name"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label>Total Amount</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Image Url"
+                    name="image_url"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label>Characters</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Image Url"
+                    name="image_url"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label>Character Amount</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Image Url"
+                    name="image_url"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <button type="submit" class="btn btn-primary">
+                  Delete
+                </button>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <button type="submit" class="btn btn-primary float-right">
+                  Update
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <a
+              class="collapsed card-link"
+              data-toggle="collapse"
+              href="#collapseTwo"
+            >
+              Character Details #2
+            </a>
+          </div>
+          <div id="collapseTwo" class="collapse" data-parent="#accordion">
+            <div class="row p-4">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label>Character Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Character Name"
+                    name="character_name"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label>Image Url</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Image Url"
+                    name="image_url"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label>Character Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Character Name"
+                    name="character_name"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label>Total Amount</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Image Url"
+                    name="image_url"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label>Characters</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Image Url"
+                    name="image_url"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label>Character Amount</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Image Url"
+                    name="image_url"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <button type="submit" class="btn btn-primary">
+                  Delete
+                </button>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <button type="submit" class="btn btn-primary float-right">
+                  Update
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <a
+              class="collapsed card-link"
+              data-toggle="collapse"
+              href="#collapseThree"
+            >
+              Character Details #3
+            </a>
+          </div>
+          <div id="collapseThree" class="collapse" data-parent="#accordion">
+            <div class="row p-4">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label>Character Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Character Name"
+                    name="character_name"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label>Image Url</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Image Url"
+                    name="image_url"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label>No of characters</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Character Name"
+                    name="character_name"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label>Total Amount</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Image Url"
+                    name="image_url"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label>Characters</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Image Url"
+                    name="image_url"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="form-group">
+                  <label>Character Amount</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Image Url"
+                    name="image_url"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <button type="submit" class="btn btn-primary">
+                  Delete
+                </button>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <button type="submit" class="btn btn-primary float-right">
+                  Update
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var departments = [];
+
+  var init_department = function() {
+    var departemntEle = $("#myInput");
+
+    var department = departemntEle.val();
+
+    if (department) {
+      departments.push(
+        "<li><span>" +
+          department +
+          "</span><i class='fa fa-times' aria-hidden='true'></i></li>"
+      );
+
+      departemntEle.val("");
+    }
+    localStorage.setItem("item", departments);
+    document.getElementById("department_list_div").innerHTML = departments;
+
+    assignPersistedData(departments);
+  };
+
+  var removeList = function() {};
+
+  function assignPersistedData(newData) {
+    departments = newData;
+    var str = "";
+    for (var item of departments) {
+      str += "<option>" + item + "</option>";
+    }
+    var data = departments.join("");
+    document.getElementById("department_list_div").innerHTML = data;
+    document.getElementById("sel1").innerHTML = str;
+  }
+
+  function getData() {
+    console.log("INSIDE GET DATA");
+    let data = localStorage.getItem("item");
+    let newData = data.split(",");
+    assignPersistedData(newData);
+  }
+  getData();
+</script>
+
+{% endblock %}
+
+<!-- "<label><small>" +
+  department +
+  '</small><img onclick="removeFromDepartment(event)" src="/assets/img/doctor-view-profile/shape.svg"></label>' -->

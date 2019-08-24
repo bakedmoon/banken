@@ -1,0 +1,134 @@
+{% extends "restApp/base.html" %} {% block body_block %}
+<div class="container">
+  <div class="row mt-3 mb-2">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="float-right text-center">
+        <a href="{% url 'dashboard' %}"
+          ><button class="add_col_btn"><span>+</span></button></a
+        >
+        <p>Add New</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+      <div class="admin-game-col">
+        <h4 class="admin-col-game-name" title="Game1">Game1</h4>
+        <div class="admin-col-bottom-btn">
+          <button class="btn btn-info float-left">Update</button>
+          <button
+            class="btn btn-danger float-right"
+            data-toggle="modal"
+            data-target="#game_delete_modal"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+      <div class="admin-game-col">
+        <h4 class="admin-col-game-name" title="Game1">Game2</h4>
+        <div class="admin-col-bottom-btn">
+          <button class="btn btn-info float-left">Update</button>
+          <button
+            class="btn btn-danger float-right"
+            data-toggle="modal"
+            data-target="#game_delete_modal"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+      <div class="admin-game-col">
+        <h4 class="admin-col-game-name" title="Game1">Game3</h4>
+        <div class="admin-col-bottom-btn">
+          <button class="btn btn-info float-left">Update</button>
+          <button
+            class="btn btn-danger float-right"
+            data-toggle="modal"
+            data-target="#game_delete_modal"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+      <div class="admin-game-col">
+        <h4 class="admin-col-game-name" title="Game1">Game4</h4>
+        <div class="admin-col-bottom-btn">
+          <button class="btn btn-info float-left">Update</button>
+          <button
+            class="btn btn-danger float-right"
+            data-toggle="modal"
+            data-target="#game_delete_modal"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+      <div class="admin-game-col">
+        <h4 class="admin-col-game-name" title="Game1">Game5</h4>
+        <div class="admin-col-bottom-btn">
+          <button class="btn btn-info float-left">Update</button>
+          <button
+            class="btn btn-danger float-right"
+            data-toggle="modal"
+            data-target="#game_delete_modal"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+      <div class="admin-game-col">
+        <h4 class="admin-col-game-name" title="Game1">Game6</h4>
+        <div class="admin-col-bottom-btn">
+          <button class="btn btn-info float-left">Update</button>
+          <button
+            class="btn btn-danger float-right"
+            data-toggle="modal"
+            data-target="#game_delete_modal"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="game_delete_modal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Header</h4>
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
+      </div>
+      <div class="modal-body text-center mt-3">
+        <p>Are you sure you want to delete the game</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          Close
+        </button>
+        <button class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
