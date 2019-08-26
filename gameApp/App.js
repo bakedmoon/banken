@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 
-import { View, StyleSheet, Text, Image, ImageBackground } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  Image,
+  ImageBackground,
+  TouchableHighlight,
+  Button
+} from "react-native";
 import CountDown from "react-native-countdown-component";
 import bg from "./assets/image5.jpeg";
 import icon1 from "./assets/characters/cat-icon.png";
@@ -9,6 +17,21 @@ import icon3 from "./assets/characters/hen-icon.jpeg";
 import icon4 from "./assets/characters/rabbit-icon.jpg";
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isModalVisible: false
+    };
+  }
+
+  callFunc() {
+    if (this.isModalVisible) {
+      this.setState({ isModalVisible: false });
+    } else {
+      this.setState({ isModalVisible: true });
+    }
+  }
+
   render() {
     return (
       // Try setting `flexDirection` to `column`.
@@ -22,7 +45,9 @@ export default class App extends Component {
       >
         <ImageBackground source={bg} style={styles.backgroundImage} />
         <View style={styles.overlay} />
-        <View style={{ position: "absolute", top: 0, width: "100%" }}>
+        <View
+          style={{ position: "absolute", top: 0, width: "100%", marginTop: 40 }}
+        >
           <CountDown
             size={20}
             until={1000}
@@ -39,10 +64,35 @@ export default class App extends Component {
           />
           <View style={styles.container}>
             <View style={styles.card}>
-              <Image source={icon1} style={styles.iconSize} />
+              <TouchableHighlight
+                onPress={this.callFunc.bind(this)}
+                underlayColor="white"
+              >
+                <Image source={icon1} style={styles.iconSize} />
+              </TouchableHighlight>
+              {/* <View >
+                {// Pass any View or Component inside the curly bracket.
+                // Here the ? Question Mark represent the ternary operator.
+
+                this.state.status ? (
+                  <Text
+                    style={{ fontSize: 25, color: "#000", textAlign: "center" }}
+                  >
+                    {" "}
+                    Hello Friends{" "}
+                  </Text>
+                ) : null}
+
+                <Button
+                  title="Hide Text Component"
+                  onPress={this.ShowHideTextComponentView}
+                />
+              </View> */}
             </View>
             <View style={styles.card}>
-              <Image source={icon2} style={styles.iconSize} />
+              {this.state.isModalVisible && (
+                <Image source={icon2} style={styles.iconSize} />
+              )}
             </View>
             <View style={styles.card}>
               <Image source={icon3} style={styles.iconSize} />
@@ -52,10 +102,96 @@ export default class App extends Component {
             </View>
           </View>
           <View style={styles.container}>
-            <View style={styles.card} />
-            <View style={styles.card} />
-            <View style={styles.card} />
-            <View style={styles.card} />
+            <View style={styles.card}>
+              <View>
+                <Text style={{ color: "#fff" }}>You Won</Text>
+                <Text style={{ textAlign: "center", color: "#fff" }}>
+                  Rs. 32
+                </Text>
+              </View>
+            </View>
+            <View style={styles.card}>
+              <View>
+                <Text style={{ color: "#fff" }}>You Won</Text>
+                <Text style={{ textAlign: "center", color: "#fff" }}>
+                  Rs. 32
+                </Text>
+              </View>
+            </View>
+            <View style={styles.card}>
+              <View>
+                <Text style={{ color: "#fff" }}>You Won</Text>
+                <Text style={{ textAlign: "center", color: "#fff" }}>
+                  Rs. 32
+                </Text>
+              </View>
+            </View>
+            <View style={styles.card}>
+              <View>
+                <Text style={{ color: "#fff" }}>You Won</Text>
+                <Text style={{ textAlign: "center", color: "#fff" }}>
+                  Rs. 32
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          style={{
+            position: "absolute",
+            bottom: 0,
+            paddingTop: 12,
+            paddingBottom: 12,
+            width: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.3)",
+            textAlign: "center",
+            flex: 1,
+            justifyContent: "space-evenly",
+            flexDirection: "row",
+            alignContent: "center",
+            alignItems: "center"
+          }}
+        >
+          <View>
+            <Text
+              style={{ textAlign: "center", color: "#fff", fontWeight: "bold" }}
+            >
+              32
+            </Text>
+            <Text style={{ color: "#fff", fontWeight: "bold" }}>
+              Total Amount
+            </Text>
+          </View>
+          <View
+            style={{
+              borderWidth: 1,
+              borderLeftColor: "#fff",
+              borderRightColor: "#fff",
+              borderTopColor: "transparent",
+              borderBottomColor: "transparent",
+              paddingLeft: 10,
+              paddingRight: 10,
+              fontWeight: "bold"
+            }}
+          >
+            <Text
+              style={{ textAlign: "center", color: "#fff", fontWeight: "bold" }}
+            >
+              32
+            </Text>
+            <Text style={{ color: "#fff", fontWeight: "bold" }}>
+              Earned Amount
+            </Text>
+          </View>
+          <View>
+            <Text
+              style={{ textAlign: "center", color: "#fff", fontWeight: "bold" }}
+            >
+              32
+            </Text>
+            <Text style={{ color: "#fff", fontWeight: "bold" }}>
+              Remaining Amount
+            </Text>
           </View>
         </View>
       </View>
