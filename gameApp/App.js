@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { View,  Text, StyleSheet, TouchableHighlight, Image} from 'react-native'
-
+import { View,  Text, StyleSheet, TouchableHighlight, Image, ImageBackground} from 'react-native';
+import bg from './assets/image1.jpeg';
 export default class App extends Component {
  
 constructor() {
@@ -14,6 +14,7 @@ constructor() {
       "img": require("./assets/image2.jpeg")
     },
     {
+    
       "img": require("./assets/image3.jpeg")
     }
      ]
@@ -33,8 +34,7 @@ shuffle(array) {
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
     }
-  
-    return array;
+     return array;
   }
   
 componentWillMount(){
@@ -46,51 +46,36 @@ componentWillMount(){
 
   render() {
   return (
-    this.state.arr.map(item => {
-      return 
+    
       <View
-      style={{
-        flex: 1,
-        flexDirection: "column",
-        justifyContent: "flex-start"
-      }}
-    >
-      <ImageBackground source={bg} style={styles.backgroundImage} />
-      <View style={styles.overlay} />
+       style={{
+         flex: 1,
+         flexDirection: "column",
+         justifyContent: "flex-start"
+       }}>
+       <ImageBackground source={bg} style={styles.backgroundImage}/>
+       <View style={styles.overlay} />
        <View style={{ position: "absolute", top: 0, width: "100%" }}>
-         <CountDown
-           size={20}
-           until={1000}
-           onFinish={() => alert("Finished")}
-           digitStyle={{
-             backgroundColor: "#FFF"
-           }}
-           digitTxtStyle={{ color: "#1CC625" }}
-           timeLabelStyle={{ color: "red", fontWeight: "bold" }}
-           separatorStyle={{ color: "#1CC625" }}
-           timeToShow={["H", "M", "S"]}
-           timeLabels={{ m: null, s: null }}
-           showSeparator
-         />
-            <View style={styles.container}>
-           <View style={styles.card}>
-              <Image source={item.img}
-               style={{height: 60, width: 60}} 
-               resizeMode='contain' />
-   </View>
-   </View>
-   </View>
-   </View>
-    })
-           
-          
+         
+      <View style={styles.container}>
+       {this.state.arr.map(dest => 
+        <View style={styles.card}>
+           <Image source={dest.img}
+                key={dest.destinationId}
+                style={{height: 60, width: 60}} 
+                resizeMode='contain' />
+        </View>
+       )}
+
+    </View>
+      </View>
+     
+  </View>   
+     
   );
   }
-  
-}
-  
-  
-
+  }
+ 
   const styles = StyleSheet.create({
     container: {
       flexDirection: "row"
