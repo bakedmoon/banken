@@ -10,10 +10,7 @@ import {
 } from "react-native";
 import CountDown from "react-native-countdown-component";
 import bg from "./assets/image5.jpeg";
-import icon1 from "./assets/characters/cat-icon.png";
-import icon2 from "./assets/characters/dog-icon.jpg";
-import icon3 from "./assets/characters/hen-icon.jpeg";
-import icon4 from "./assets/characters/rabbit-icon.jpg";
+
 export default class App extends Component {
  
 constructor() {
@@ -27,12 +24,11 @@ constructor() {
       "img": require("./assets/characters/dog-icon.jpg")
     },
     {
-    
-      "img": require("./assets/characters/hen-icon.jpeg")
+     "img": require("./assets/characters/hen-icon.jpeg")
     },
     {
     
-      "img": require("./assets/characters/rabbit-icon.jpeg")
+      "img": require("./assets/characters/rabbit-icon.jpg")
     }
      ]
     
@@ -93,12 +89,12 @@ componentWillMount(){
           <View style={styles.container}>
           {this.state.arr.map(dest => 
            <View style={styles.card}>
-             <Image source={dest.img}
+             {/* <Image source={dest.img}
                 key={dest.destinationId}
                 style={{height: 60, width: 60}} 
-                resizeMode='contain' />
+                resizeMode='contain' /> */}
                <TouchableHighlight  underlayColor="white">
-                <Image source={icon1} style={styles.iconSize} />
+                <Image source={dest.img} style={styles.iconSize} />
                </TouchableHighlight>
            </View>
          
@@ -138,6 +134,7 @@ componentWillMount(){
               </View>
             </View>
           </View> */}
+        </View>
         </View>
         <View
           style={{
@@ -199,8 +196,8 @@ componentWillMount(){
           </View>
  </View>
  </View>
- </View>
-  )}}
+
+  )}};
 
   const styles = StyleSheet.create({
     container: {
