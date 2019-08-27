@@ -5,7 +5,7 @@ import {
   Text,
   Image,
   ImageBackground,
-  TouchableHighlight,
+  TouchableOpacity,
   Button
 } from "react-native";
 import CountDown from "react-native-countdown-component";
@@ -93,9 +93,9 @@ componentWillMount(){
                 key={dest.destinationId}
                 style={{height: 60, width: 60}} 
                 resizeMode='contain' /> */}
-               <TouchableHighlight  underlayColor="white">
+               <TouchableOpacity  underlayColor="white">
                 <Image source={dest.img} style={styles.iconSize} />
-               </TouchableHighlight>
+               </TouchableOpacity>
            </View>
          
           )}
