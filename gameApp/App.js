@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   View,
   StyleSheet,
@@ -6,67 +6,73 @@ import {
   Image,
   ImageBackground,
   TouchableOpacity,
+  TouchableHighlight,
   Button
 } from "react-native";
 import CountDown from "react-native-countdown-component";
 import bg from "./assets/image5.jpeg";
 
 export default class App extends Component {
- 
-constructor() {
-  super();
-  this.state = {
-     arr : [
-       {
-      "img": require("./assets/characters/cat-icon.png")
-    },
-    {
-      "img": require("./assets/characters/dog-icon.jpg")
-    },
-    {
-     "img": require("./assets/characters/hen-icon.jpeg")
-    },
-    {
-    
-      "img": require("./assets/characters/rabbit-icon.jpg")
-    }
-     ]
-    
-  }
+  constructor() {
+    super();
+    this.state = {
+      isModalVisible: false,
+      arr: [
+        {
+          img: require("./assets/characters/cat-icon.png")
+        },
+        {
+          img: require("./assets/characters/dog-icon.jpg")
+        },
+        {
+          img: require("./assets/characters/hen-icon.jpeg")
+        },
+        {
+          img: require("./assets/characters/rabbit-icon.jpg")
+        }
+      ]
+    };
   }
 
-shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-  
+  shuffle(array) {
+    var currentIndex = array.length,
+      temporaryValue,
+      randomIndex;
+
     while (0 !== currentIndex) {
-  
-       randomIndex = Math.floor(Math.random() * currentIndex);
+      randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
-  
+
       temporaryValue = array[currentIndex];
       array[currentIndex] = array[randomIndex];
       array[randomIndex] = temporaryValue;
     }
-     return array;
+    return array;
   }
-  
-componentWillMount(){
-  let myData = this.state.arr
-  this.shuffle(myData)
-  console.log(this.state.arr);
-  
-}
 
+  componentWillMount() {
+    let myData = this.state.arr;
+    this.shuffle(myData);
+    console.log(this.state.arr);
+  }
+
+  callFunc() {
+    if (this.isModalVisible) {
+      this.setState({ isModalVisible: false });
+    } else {
+      this.setState({ isModalVisible: true });
+    }
+  }
 
   render() {
-  return (
-    
+    return (
       <View
         style={{
           flex: 1,
           flexDirection: "column",
           justifyContent: "flex-start"
-        }}>
+        }}
+      >
         <ImageBackground source={bg} style={styles.backgroundImage} />
         <View style={styles.overlay} />
         <View
@@ -87,54 +93,34 @@ componentWillMount(){
             showSeparator
           />
           <View style={styles.container}>
-          {this.state.arr.map(dest => 
-           <View style={styles.card}>
-             {/* <Image source={dest.img}
+            {this.state.arr.map(dest => (
+              <View style={styles.card}>
+                {/* <Image source={dest.img}
                 key={dest.destinationId}
                 style={{height: 60, width: 60}} 
                 resizeMode='contain' /> */}
-               <TouchableOpacity  underlayColor="white">
-                <Image source={dest.img} style={styles.iconSize} />
-               </TouchableOpacity>
-           </View>
-         
-          )}
-        
-          {/* <View style={styles.container}>
-            <View style={styles.card}>
-              <View>
-                <Text style={{ color: "#fff" }}>You Won</Text>
-                <Text style={{ textAlign: "center", color: "#fff" }}>
-                  Rs. 32
-                </Text>
+                <TouchableHighlight
+                  onPress={this.callFunc.bind(this)}
+                  underlayColor="white"
+                >
+                  <View>
+                    {!this.state.isModalVisible && (
+                      <Image source={dest.img} style={styles.iconSize} />
+                    )}
+
+                    {this.state.isModalVisible && (
+                      <View>
+                        <Text style={{ color: "#fff" }}>You Won</Text>
+                        <Text style={{ textAlign: "center", color: "#fff" }}>
+                          Rs. 32
+                        </Text>
+                      </View>
+                    )}
+                  </View>
+                </TouchableHighlight>
               </View>
-            </View>
-            <View style={styles.card}>
-              <View>
-                <Text style={{ color: "#fff" }}>You Won</Text>
-                <Text style={{ textAlign: "center", color: "#fff" }}>
-                  Rs. 32
-                </Text>
-              </View>
-            </View>
-            <View style={styles.card}>
-              <View>
-                <Text style={{ color: "#fff" }}>You Won</Text>
-                <Text style={{ textAlign: "center", color: "#fff" }}>
-                  Rs. 32
-                </Text>
-              </View>
-            </View>
-            <View style={styles.card}>
-              <View>
-                <Text style={{ color: "#fff" }}>You Won</Text>
-                <Text style={{ textAlign: "center", color: "#fff" }}>
-                  Rs. 32
-                </Text>
-              </View>
-            </View>
-          </View> */}
-        </View>
+            ))}
+          </View>
         </View>
         <View
           style={{
@@ -175,7 +161,11 @@ componentWillMount(){
             }}
           >
             <Text
-              style={{ textAlign: "center", color: "#fff", fontWeight: "bold" }}
+              style={{
+                textAlign: "center",
+                color: "#fff",
+                fontWeight: "bold"
+              }}
             >
               32
             </Text>
@@ -194,43 +184,44 @@ componentWillMount(){
               Remaining Amount
             </Text>
           </View>
- </View>
- </View>
+        </View>
+      </View>
+    );
+  }
+}
 
-  )}};
-
-  const styles = StyleSheet.create({
-    container: {
-      flexDirection: "row"
-    },
-    card: {
-      flex: 1,
-      height: 80,
-      borderRadius: 8,
-      backgroundColor: "rgba(144, 212 , 245, 0.2)",
-      margin: 5,
-      shadowOffset: { width: 20, height: 20 },
-      shadowColor: "#95b2c3",
-      shadowOpacity: 1.0,
-      textAlign: "center",
-      alignItems: "center",
-      justifyContent: "center"
-    },
-    backgroundImage: {
-      flex: 1,
-      height: "100%",
-      resizeMode: "cover" // or 'stretch'
-    },
-    overlay: {
-      flex: 1,
-      position: "absolute",
-      backgroundColor: "rgba(0,0,0,0.5)",
-      width: "100%",
-      height: "100%"
-    },
-    iconSize: {
-      maxHeight: 64,
-      maxWidth: 64,
-      borderRadius: 8
-    }
-   });
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row"
+  },
+  card: {
+    flex: 1,
+    height: 80,
+    borderRadius: 8,
+    backgroundColor: "rgba(144, 212 , 245, 0.2)",
+    margin: 5,
+    shadowOffset: { width: 20, height: 20 },
+    shadowColor: "#95b2c3",
+    shadowOpacity: 1.0,
+    textAlign: "center",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  backgroundImage: {
+    flex: 1,
+    height: "100%",
+    resizeMode: "cover" // or 'stretch'
+  },
+  overlay: {
+    flex: 1,
+    position: "absolute",
+    backgroundColor: "rgba(0,0,0,0.5)",
+    width: "100%",
+    height: "100%"
+  },
+  iconSize: {
+    maxHeight: 64,
+    maxWidth: 64,
+    borderRadius: 8
+  }
+});
