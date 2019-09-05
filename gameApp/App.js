@@ -11,12 +11,18 @@ import {
 } from "react-native";
 import CountDown from "react-native-countdown-component";
 import bg from "./assets/image5.jpeg";
-
+import axios from 'axios';
+const imageCharacters = [];
+const amount = [145,276,44,55,86,27,88,89,27,95,124,32];
 export default class App extends Component {
+  static navigationOptions = {
+    header: null,
+};
   constructor() {
     super();
     this.state = {
-      isModalVisible: false,
+      gameResponse: '',
+      isAmountVisible: false,
       arr: [
         {
           img: require("./assets/characters/cat-icon.png")
@@ -28,56 +34,122 @@ export default class App extends Component {
           img: require("./assets/characters/hen-icon.jpeg")
         },
         {
-          img: require("./assets/characters/rabbit-icon.jpg")
-        }
-      ]
+          img: require("./assets/characters/1.png")
+        },
+        {
+          img: require("./assets/characters/2.png")
+        },
+        {
+          img: require("./assets/characters/3.png")
+        },
+        {
+          img: require("./assets/characters/4.jpeg")
+        },
+        {
+          img: require("./assets/characters/5.png")
+        },
+        {
+          img: require("./assets/characters/6.png")
+        },
+        {
+          img: require("./assets/characters/7.png")
+        },
+        {
+          img: require("./assets/characters/8.jpeg")
+        },
+        
+      ],
+     count:[50],
     };
+
+   
   }
 
+  
   shuffle(array) {
-    var currentIndex = array.length,
-      temporaryValue,
-      randomIndex;
+  let counter = array.length;
+  while (counter > 0) {
+      // Pick a random index
+      let index = Math.floor(Math.random() * counter);
+      counter--;
 
-    while (0 !== currentIndex) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-    return array;
+      // And swap the last element with it
+      let temp = array[counter];
+      array[counter] = array[index];
+      array[index] = temp;
   }
 
-  componentWillMount() {
-    let myData = this.state.arr;
-    this.shuffle(myData);
-    console.log(this.state.arr);
-  }
+ return array;
+}
 
-  callFunc() {
-    if (this.isModalVisible) {
-      this.setState({ isModalVisible: false });
+// componentDidMount() {
+//   axios.get('http://192.168.0.156:8000/api/v1/restApp/')
+//   .then(response => {
+//     console.log(response.data.gameData);
+//   })
+//   .catch(error => {
+//     console.log(error);
+//   });
+// }
+
+handleClick(){
+    let shufflearr = this.state.arr
+    this.shuffle(shufflearr)
+    console.log(shufflearr);
+
+    if (this.isAmountVisible) {
+      this.setState({ isAmountVisible: false });
     } else {
-      this.setState({ isModalVisible: true });
+      this.setState({ isAmountVisible: true });
     }
+
   }
+
+  
+
+
 
   render() {
+
+    let Blocks = [];
+    
+        for (let i = 0; i <= this.state.count; i++) {
+            let item = imageCharacters[i];
+            let amt = amount[i];
+            Blocks.push(<View  key={i} style={styles.card}>
+               <TouchableHighlight
+                    onPress={() =>this.handleClick()}
+                    underlayColor="white">
+                      <View>
+                        {!this.state.isAmountVisible && (
+                          <Image source={require("./assets/characters/3.png")} style={styles.iconSize} />
+                   )}
+          
+                        {this.state.isAmountVisible && (
+                         <View>
+                         <Text style={{ color: "#fff" , fontSize:7 }}>You Won</Text>
+                           <Text style={{ textAlign: "center", color: "#fff", fontWeight:'bold',fontSize:10 }}>
+                               {amt}
+                            </Text>
+                        </View>
+                      )}
+                     </View> 
+                  
+                 </TouchableHighlight>
+                 </View>);
+        }
+   
     return (
       <View
         style={{
           flex: 1,
           flexDirection: "column",
           justifyContent: "flex-start"
-        }}
-      >
+        }}>
         <ImageBackground source={bg} style={styles.backgroundImage} />
         <View style={styles.overlay} />
         <View
-          style={{ position: "absolute", top: 0, width: "100%", marginTop: 40 }}
-        >
+          style={{ position: "absolute", top: 0, width: "100%", marginTop: 40 }}>
           <CountDown
             size={20}
             until={1000}
@@ -93,35 +165,9 @@ export default class App extends Component {
             showSeparator
           />
           <View style={styles.container}>
-            {this.state.arr.map(dest => (
-              <View style={styles.card}>
-                {/* <Image source={dest.img}
-                key={dest.destinationId}
-                style={{height: 60, width: 60}} 
-                resizeMode='contain' /> */}
-                <TouchableHighlight
-                  onPress={this.callFunc.bind(this)}
-                  underlayColor="white"
-                >
-                  <View>
-                    {!this.state.isModalVisible && (
-                      <Image source={dest.img} style={styles.iconSize} />
-                    )}
-
-                    {this.state.isModalVisible && (
-                      <View>
-                        <Text style={{ color: "#fff" }}>You Won</Text>
-                        <Text style={{ textAlign: "center", color: "#fff" }}>
-                          Rs. 32
-                        </Text>
-                      </View>
-                    )}
-                  </View>
-                </TouchableHighlight>
-              </View>
-            ))}
+           {Blocks}
           </View>
-        </View>
+       </View>
         <View
           style={{
             position: "absolute",
@@ -139,9 +185,7 @@ export default class App extends Component {
           }}
         >
           <View>
-            <Text
-              style={{ textAlign: "center", color: "#fff", fontWeight: "bold" }}
-            >
+            <Text style={{ textAlign: "center", color: "#fff", fontWeight: "bold" }}>
               32
             </Text>
             <Text style={{ color: "#fff", fontWeight: "bold" }}>
@@ -165,8 +209,7 @@ export default class App extends Component {
                 textAlign: "center",
                 color: "#fff",
                 fontWeight: "bold"
-              }}
-            >
+              }}>
               32
             </Text>
             <Text style={{ color: "#fff", fontWeight: "bold" }}>
@@ -192,11 +235,14 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row"
+    width: '100%', 
+    flexDirection: 'row', 
+    flexWrap: 'wrap'
   },
   card: {
-    flex: 1,
+    width: '9%',
     height: 80,
+    aspectRatio: 1,
     borderRadius: 8,
     backgroundColor: "rgba(144, 212 , 245, 0.2)",
     margin: 5,
@@ -220,8 +266,8 @@ const styles = StyleSheet.create({
     height: "100%"
   },
   iconSize: {
-    maxHeight: 64,
-    maxWidth: 64,
+    maxHeight: 38,
+    maxWidth: 38,
     borderRadius: 8
   }
 });
