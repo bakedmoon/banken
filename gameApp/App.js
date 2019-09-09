@@ -9,20 +9,24 @@ import {
   TouchableHighlight,
   Button
 } from "react-native";
+import FlipCard from "react-native-flip-card";
 import CountDown from "react-native-countdown-component";
 import bg from "./assets/image5.jpeg";
-import axios from 'axios';
+import axios from "axios";
 const imageCharacters = [];
-const amount = [145,276,44,55,86,27,88,89,27,95,124,32];
+const amount = [145, 276, 44, 55, 86, 27, 88, 89, 27, 95, 124, 32];
 export default class App extends Component {
   static navigationOptions = {
-    header: null,
-};
+    header: null
+  };
   constructor() {
     super();
     this.state = {
-      gameResponse: '',
+      gameResponse: "",
       isAmountVisible: false,
+      addClass: false,
+      isClickable: true,
+      isFlipEnd: false,
       arr: [
         {
           img: require("./assets/characters/cat-icon.png")
@@ -56,19 +60,15 @@ export default class App extends Component {
         },
         {
           img: require("./assets/characters/8.jpeg")
-        },
-        
+        }
       ],
-     count:[50],
+      count: [50]
     };
-
-   
   }
 
-  
   shuffle(array) {
-  let counter = array.length;
-  while (counter > 0) {
+    let counter = array.length;
+    while (counter > 0) {
       // Pick a random index
       let index = Math.floor(Math.random() * counter);
       counter--;
@@ -77,79 +77,103 @@ export default class App extends Component {
       let temp = array[counter];
       array[counter] = array[index];
       array[index] = temp;
-  }
-
- return array;
-}
-
-// componentDidMount() {
-//   axios.get('http://192.168.0.156:8000/api/v1/restApp/')
-//   .then(response => {
-//     console.log(response.data.gameData);
-//   })
-//   .catch(error => {
-//     console.log(error);
-//   });
-// }
-
-handleClick(){
-    let shufflearr = this.state.arr
-    this.shuffle(shufflearr)
-    console.log(shufflearr);
-
-    if (this.isAmountVisible) {
-      this.setState({ isAmountVisible: false });
-    } else {
-      this.setState({ isAmountVisible: true });
     }
 
+    return array;
   }
 
-  
+  // componentDidMount() {
+  //   axios.get('http://192.168.0.156:8000/api/v1/restApp/')
+  //   .then(response => {
+  //     console.log(response.data.gameData);
+  //   })
+  //   .catch(error => {
+  //     console.log(error);
+  //   });
+  // }
 
+  handleClick() {
+    // let boxClass = ["card"];
+    console("hello");
+    let shufflearr = this.state.arr;
+    this.shuffle(shufflearr);
+    console.log(shufflearr);
 
+    if (this.isAmountVisible && this.isFlipEnd) {
+      this.setState({ isAmountVisible: false });
+      this.setState({ isClickable: true });
+      this.setState({ isFlipEnd: true });
+    } else {
+      this.setState({ isAmountVisible: true });
+      this.setState({ isClickable: false });
+      this.setState({ isFlipEnd: false });
+      // boxClass.pop("flipper");
+    }
+  }
 
   render() {
-
     let Blocks = [];
-    
-        for (let i = 0; i <= this.state.count; i++) {
-            let item = imageCharacters[i];
-            let amt = amount[i];
-            Blocks.push(<View  key={i} style={styles.card}>
-               <TouchableHighlight
-                    onPress={() =>this.handleClick()}
-                    underlayColor="white">
-                      <View>
-                        {!this.state.isAmountVisible && (
-                          <Image source={require("./assets/characters/3.png")} style={styles.iconSize} />
-                   )}
-          
-                        {this.state.isAmountVisible && (
-                         <View>
-                         <Text style={{ color: "#fff" , fontSize:7 }}>You Won</Text>
-                           <Text style={{ textAlign: "center", color: "#fff", fontWeight:'bold',fontSize:10 }}>
-                               {amt}
-                            </Text>
-                        </View>
-                      )}
-                     </View> 
-                  
-                 </TouchableHighlight>
-                 </View>);
-        }
-   
+
+    for (let i = 0; i <= this.state.count; i++) {
+      let item = imageCharacters[i];
+      let amt = amount[i];
+      Blocks.push(
+        <View key={i} style={styles.gameCard}>
+          <TouchableHighlight
+            underlayColor="white"
+            onPress={() => {
+              this.handleClick();
+            }}
+          >
+            <FlipCard
+              style={styles.card}
+              friction={6}
+              perspective={1000}
+              flipHorizontal={true}
+              flipVertical={false}
+              flip={false}
+              clickable={this.state.isClickable}
+              onFlipEnd={isFlipEnd => {
+                console.log("isFlipEnd", isFlipEnd);
+              }}
+            >
+              <Image
+                source={require("./assets/characters/3.png")}
+                style={styles.face}
+              />
+
+              <View style={styles.back}>
+                <Text style={{ color: "#fff", fontSize: 7 }}>You Won</Text>
+                <Text
+                  style={{
+                    textAlign: "center",
+                    color: "#fff",
+                    fontWeight: "bold",
+                    fontSize: 10
+                  }}
+                >
+                  {amt}
+                </Text>
+              </View>
+            </FlipCard>
+          </TouchableHighlight>
+        </View>
+      );
+    }
+
     return (
       <View
         style={{
           flex: 1,
           flexDirection: "column",
           justifyContent: "flex-start"
-        }}>
+        }}
+      >
         <ImageBackground source={bg} style={styles.backgroundImage} />
         <View style={styles.overlay} />
         <View
-          style={{ position: "absolute", top: 0, width: "100%", marginTop: 40 }}>
+          style={{ position: "absolute", top: 0, width: "100%", marginTop: 40 }}
+        >
           <CountDown
             size={20}
             until={1000}
@@ -164,10 +188,8 @@ handleClick(){
             timeLabels={{ m: null, s: null }}
             showSeparator
           />
-          <View style={styles.container}>
-           {Blocks}
-          </View>
-       </View>
+          <View style={styles.container}>{Blocks}</View>
+        </View>
         <View
           style={{
             position: "absolute",
@@ -185,7 +207,9 @@ handleClick(){
           }}
         >
           <View>
-            <Text style={{ textAlign: "center", color: "#fff", fontWeight: "bold" }}>
+            <Text
+              style={{ textAlign: "center", color: "#fff", fontWeight: "bold" }}
+            >
               32
             </Text>
             <Text style={{ color: "#fff", fontWeight: "bold" }}>
@@ -209,7 +233,8 @@ handleClick(){
                 textAlign: "center",
                 color: "#fff",
                 fontWeight: "bold"
-              }}>
+              }}
+            >
               32
             </Text>
             <Text style={{ color: "#fff", fontWeight: "bold" }}>
@@ -235,13 +260,23 @@ handleClick(){
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%', 
-    flexDirection: 'row', 
-    flexWrap: 'wrap'
+    width: "100%",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    transform: [{ perspective: 800 }]
   },
-  card: {
-    width: '9%',
-    height: 80,
+  face: {
+    width: 50,
+    height: 50,
+    borderRadius: 8
+  },
+  back: {
+    flex: 1,
+    justifyContent: "center"
+  },
+  gameCard: {
+    width: 50,
+    height: 50,
     aspectRatio: 1,
     borderRadius: 8,
     backgroundColor: "rgba(144, 212 , 245, 0.2)",
@@ -253,6 +288,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
+
   backgroundImage: {
     flex: 1,
     height: "100%",
